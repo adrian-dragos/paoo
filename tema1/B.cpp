@@ -4,27 +4,26 @@ using namespace std;
 
 class B {       
     public:             
-        string str; 
+        std::string str; 
 
-    B(int number, std::string str) {
-        this->str = str;
-    }
+    public:
+        B(std::string str) : str(str) {}
 
     private: B(const B& b);
 
-
-    B(B && b) {
-        cout << "Calling move constructor\n";
-        this->str = b.str;
-        b.str = "";
-    } 
+    public:
+        B(B && b) {
+            cout << "Calling move constructor\n";
+            this->str = b.str;
+            b.str = "";
+        } 
 
     private:
         B& operator=(const B&);
-
 };
 
 int main() {
-    cout << "hello";
+    B *b = new B("hello");
+    cout << b->str << endl;
     return 0;
 }
