@@ -23,11 +23,11 @@ class B {
 };
 
 int main() {
-    B *b = new B("hello");
-    cout << b->str << endl;
+    B b("hello");
+    cout << b.str << endl;
 
-    B move_b((B&&)*b);
-    cout << b->str << endl;
+    B move_b((B&&)b);
+    cout << b.str << endl;
     cout << move_b.str << endl;
     return 0;
 }
