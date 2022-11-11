@@ -12,9 +12,8 @@ class A {
 
     public:
         A(const A& a) {
-            cout << "Calling copy constructor\n";
-            this->number = a.number;
-            this->str = a.str;
+            number = a.number;
+            str = a.str;
         }
 
     private: 
@@ -22,12 +21,18 @@ class A {
 
     private:
         A& operator=(A&&);
-
-
 };
 
 int main() {
     A *a = new A(1, "hello");
     cout << a->number << " " << a->str << endl;
+    A copy_of_a(*a);
+    cout << copy_of_a.number << " " << copy_of_a.str << endl;
+
+    a->number = 5;
+    a->str = "ceva";
+    cout << a->number << " " << a->str << endl;
+    cout << copy_of_a.number << " " << copy_of_a.str << endl;
+
     return 0;
 }
