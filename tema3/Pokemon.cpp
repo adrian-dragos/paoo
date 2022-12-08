@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <memory>
+#include <tr1/memory>
 #include <random>
 #include <functional>
 
@@ -21,13 +21,14 @@ class Pokemon {
 
     public:
         Pokemon* createPikachu() {
+            // automatic dealocation of object
             Pokemon *pikachu = new Pokemon(1, "Picachu");
             return pikachu;
         }
 
     public:
         bool fightPickachu() {
-            std::auto_ptr<Pokemon> pokemon(createPikachu());
+            std::tr1::shared_ptr<Pokemon> pokemon(createPikachu());
 	        int random = rand() % 2;
             return random;
     }
